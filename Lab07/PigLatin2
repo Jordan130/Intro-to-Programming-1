@@ -1,0 +1,51 @@
+// Jordan Rios
+// Dr. Hardy
+// CSCI 161
+// Due: 4/1/22
+import java.util.*;
+public class PigLatin2 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner (System.in);
+		System.out.println("This program converts english into Pig Latin"); //telling the user what to do
+		System.out.print("Type a word or phrase: ");
+		String phrase = sc.nextLine(); //accepts the user input and stores it in phrase
+		convertPhrase(phrase); //passes phrase to the method convertPhrase
+
+	}
+
+	public static void convertPhrase(String phrase) {
+		String word = ""; //creates a string with nothing in it
+		for(int i = 0; i < phrase.length(); i++){ //reads the whole sentence
+			char fri = phrase.charAt(i); 
+		
+			if(fri != ' '){ //if the word doesn't have a space it runs this if statement
+				word += fri; //adds the char if there is no space
+			
+			}
+			else {
+				convertWord(word); //if there is a space it sends to the method convertWord
+				System.out.print(" ");
+				word = "";
+			}
+				
+		}
+		convertWord(word); //resends the word back through the method
+	}
+	
+	
+	public static void convertWord(String word) { //accepts the string word
+		word = word.toLowerCase(); //makes the word lower case
+		char first = word.charAt(0); 
+		
+		if (first == 'a' || first == 'e' || first == 'i' || first == 'o' || first == 'u') {	 	
+			System.out.print(word + "-way"); //if a vowel it prints out -way at the end
+		} 
+		else { //if the userWord does not start with a vowel the program prints this output														
+			String userWord = word.substring(1, word.length()); //takes every letter of the word besides the first letter and stores it into "Userword"
+			System.out.print(userWord + "-" + first + "ay");
+		}
+		
+	}
+}
+	
